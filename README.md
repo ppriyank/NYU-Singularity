@@ -119,8 +119,11 @@ This is a GPU loaded mini ubuntu and your "huge folder" mounted on root "/"
 ```
 ls /bbox_test
 ```
-
 ^^ this `/bbox_test` can not be extracted on scratch but is mounted on this mini ubuntu :) 
+
+For spark submit jobs
+replace `/bin/bash` with 
+`bash -c 'source env.sh; python code.py'`
 
 ENJOY!!
 
