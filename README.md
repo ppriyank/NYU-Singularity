@@ -64,7 +64,7 @@ python --version
 which conda
 ## /ext3/miniconda3/bin/conda
 ```
-Install pytorch : follow this or steps here : https://github.com/ppriyank/Prince-Set-UP)
+Install pytorch : follow this or steps here : https://github.com/ppriyank/Prince-Set-UP
 
 ```
 pip install torch==1.7.0+cu110 torchvision==0.8.1+cu110 torchaudio===0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
@@ -82,7 +82,48 @@ Used up memory :
 
 ### STEP 4 : Sanity check for available GPUs
 
-Request a GPU using the moethodology : 
+Request a GPU using the moethodology : https://github.com/ppriyank/Prince-Set-UP
+Verify GPUs : change the name `chikki_chikkah_pytorch1.7.0-cuda11.0.ext3` and path of the environement file `source env.sh` according to your set up 
+```
+singularity exec --nv \
+	    --overlay /scratch/pp1953/trial/chikki_chikkah_pytorch1.7.0-cuda11.0.ext3:ro \
+	    /scratch/work/public/singularity/cuda11.0-cudnn8-devel-ubuntu18.04.sif \
+	    bash -c 'source env.sh; python -c "import torch; print(torch.__file__); print(torch.__version__); print(torch.cuda.device_count())"'
+```
+
+
+### STEP 5 : creating a mount for your mini ubuntu (your dataset or large folder)
+
+Take the zip that you can extract to scratch (on the login node): 
+```
+mkdir -p  /state/partition1/pp1953
+cd /state/partition1/pp1953/
+unzip  /archive/pp1953/mars_test.zip
+find bbox_test -type d -exec chmod 755 {} \;
+find bbox_test -type f -exec chmod 644 {} \;
+
+mksquashfs bbox_test bbox_test.sqf -keep-as-directory
+mv bbox_test.sqf /scratch/pp1953/
+```
+
+This will create a single file `bbox_test.sqf` which can be read by your singularity file (mini ubuntu) and its only file :D
+```
+singularity exec --nv \
+	    --overlay /scratch/gg2501/trial/pytorch1.7.0-cuda11.0.ext3:ro \
+	    --overlay  /scratch/pp1953/bbox_test.sqf:ro \
+	    /scratch/work/public/singularity/cuda11.0-cudnn8-devel-ubuntu18.04.sif \
+	     /bin/bash
+```
+
+This is a GPU loaded mini ubuntu and your "huge folder" mounted on root "/" 
+```
+ls /bbox_test
+```
+
+^^ this `/bbox_test` can not be extracted on scratch but is mounted on this mini ubuntu :) 
+
+ENJOY!!
+
 
 
 
