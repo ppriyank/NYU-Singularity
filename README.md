@@ -130,11 +130,9 @@ ENJOY!!
 # Summary 
 
 ```
-singularity exec --nv \
-	    --overlay /scratch/pp1953/trial/chikki_chikkah_pytorch1.7.0-cuda11.0.ext3:ro \
-	    /scratch/work/public/singularity/cuda11.0-cudnn8-devel-ubuntu18.04.sif \
-	     /bin/bash
-
+singularity exec --overlay /scratch/pp1953/temp/chikki_chikkah_pytorch1.7.0-cuda11.0.ext3 \
+/scratch/work/public/singularity/cuda11.0-cudnn8-devel-ubuntu18.04.sif \
+/bin/bash
 ```
 
 
