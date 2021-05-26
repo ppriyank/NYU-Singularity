@@ -133,6 +133,8 @@ ENJOY!!
 singularity exec --overlay /scratch/pp1953/temp/chikki_chikkah_pytorch1.7.0-cuda11.0.ext3 \
 /scratch/work/public/singularity/cuda11.0-cudnn8-devel-ubuntu18.04.sif \
 /bin/bash
+
+source /ext3/env.sh
 ```
 
 
