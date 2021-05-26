@@ -109,7 +109,7 @@ mv bbox_test.sqf /scratch/pp1953/
 This will create a single file `bbox_test.sqf` which can be read by your singularity file (mini ubuntu) and its only file :D
 ```
 singularity exec --nv \
-	    --overlay /scratch/gg2501/trial/pytorch1.7.0-cuda11.0.ext3:ro \
+	    --overlay /scratch/pp1953/trial/chikki_chikkah_pytorch1.7.0-cuda11.0.ext3:ro \
 	    --overlay  /scratch/pp1953/bbox_test.sqf:ro \
 	    /scratch/work/public/singularity/cuda11.0-cudnn8-devel-ubuntu18.04.sif \
 	     /bin/bash
@@ -127,7 +127,15 @@ replace `/bin/bash` with
 
 ENJOY!!
 
+# Summary 
 
+```
+singularity exec --nv \
+	    --overlay /scratch/pp1953/trial/chikki_chikkah_pytorch1.7.0-cuda11.0.ext3:ro \
+	    /scratch/work/public/singularity/cuda11.0-cudnn8-devel-ubuntu18.04.sif \
+	     /bin/bash
+
+```
 
 
 
