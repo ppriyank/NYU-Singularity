@@ -135,11 +135,14 @@ Add `if [ -e /ext3/env.sh ]; then source /ext3/env.sh; fi` in ~/.bashrc to load 
 # Summary 
 
 ```
-singularity exec --overlay /scratch/pp1953/temp/chikki_chikkah_pytorch1.7.0-cuda11.0.ext3 \
-/scratch/work/public/singularity/cuda11.0-cudnn8-devel-ubuntu18.04.sif \
-/bin/bash
+singularity exec --nv \
+	    --overlay /scratch/pp1953/temp/chikki_chikkah_pytorch1.7.0-cuda11.0.ext3:ro \
+	    /scratch/work/public/singularity/cuda11.0-cudnn8-devel-ubuntu18.04.sif \
+	    /bin/bash
 
 source /ext3/env.sh
+
+python -c "import torch; print(torch.__file__); print(torch.__version__); print(torch.cuda.device_count())"
 ```
 
 
