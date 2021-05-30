@@ -127,6 +127,11 @@ replace `/bin/bash` with
 
 ENJOY!!
 
+## Trick 
+
+Add `if [ -e /ext3/env.sh ]; then source /ext3/env.sh; fi` in ~/.bashrc to load your environemnt automatically in the singularitry container. 
+
+
 # Summary 
 
 ```
